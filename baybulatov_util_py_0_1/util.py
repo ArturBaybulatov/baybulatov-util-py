@@ -30,6 +30,18 @@ def take_one_random(coll):
     return coll.pop(_.random(0, len(coll)-1))
 
 
+def random_phone():
+    return '+7' + str(_.sample((917, 964, 965, 987, 912, 935))) + str(_.random(1000000, 9999999))
+
+
+def random_date():
+    return timezone.utc.localize(timezone.datetime(_.random(2012, 2018), _.random(1, 12), _.random(1, 28)))
+
+
+def random_amount():
+    return random.random() * random.choice((100, 1000, 10000))
+
+
 def lorem(words=None, sentences=5):
     vocab = _.split((
         'a ac adipiscing amet ante arcu at auctor augue bibendum commodo condimentum consectetur consequat convallis curabitur'
