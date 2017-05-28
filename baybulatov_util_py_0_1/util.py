@@ -35,7 +35,8 @@ def random_phone():
 
 
 def random_date():
-    return timezone.utc.localize(timezone.datetime(_.random(2012, 2018), _.random(1, 12), _.random(1, 28)))
+    #return timezone.utc.localize(timezone.datetime(_.random(2010, 2020), _.random(1, 12), _.random(1, 28)))
+    return datetime.date(_.random(2010, 2020), _.random(1, 12), _.random(1, 28))
 
 
 def random_amount():
