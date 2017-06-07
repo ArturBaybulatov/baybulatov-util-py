@@ -1,3 +1,5 @@
+# Version 0.2
+
 from pprint import pprint, pformat
 import datetime
 import pydash as _
@@ -54,7 +56,7 @@ def lorem(words=None, sentences=5):
         'vitae viverra volutpat vulputate'
     ), ' ')
 
-    return _.join(_.times(lambda i_: _.capitalize(_.join(_.sample(vocab, words or _.random(5, 30)), ' ')), sentences), '. ')
+    return _.join(_.times(sentences, lambda i_: _.capitalize(_.join(_.sample(vocab, words or _.random(5, 30)), ' '))), '. ')
 
 
 def decap(s):
@@ -67,7 +69,7 @@ def decap(s):
 def random_ident(length=8):
     return ''.join(
         [random.choice(string.ascii_lowercase)] +
-        _.times(lambda x_: random.choice(string.ascii_letters + string.digits), length-1)
+        _.times(length-1, lambda x_: random.choice(string.ascii_letters + string.digits))
     )
 
 
