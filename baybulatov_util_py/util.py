@@ -1,4 +1,4 @@
-# Version 0.2
+# Version 0.3
 
 from pprint import pprint, pformat
 import datetime
@@ -56,7 +56,7 @@ def lorem(words=None, sentences=5):
         'vitae viverra volutpat vulputate'
     ), ' ')
 
-    return _.join(_.times(sentences, lambda i_: _.capitalize(_.join(_.sample(vocab, words or _.random(5, 30)), ' '))), '. ')
+    return _.join(_.times(sentences, lambda i_: _.capitalize(_.join(_.sample_size(vocab, words or _.random(5, 30)), ' '))), '. ')
 
 
 def decap(s):
