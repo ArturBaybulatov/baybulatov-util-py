@@ -12,6 +12,7 @@
     <OutputPath>.</OutputPath>
     <Name>baybulatov-util-py</Name>
     <RootNamespace>baybulatov-util-py</RootNamespace>
+    <InterpreterId>MSBuild|.venv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,15 +23,26 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include=".gitattributes" />
-    <Content Include=".gitignore" />
+    <Folder Include="C:\Users\artur\Documents\projects\baybulatov-util-py\baybulatov_util_py_dev\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="README.md" />
+    <Content Include="requirements-humans.txt" />
+    <Content Include="venv.bat" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="baybulatov_util_py_0_1\" />
+    <Compile Include="main.py" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="baybulatov_util_py_0_1\util.py" />
+    <Interpreter Include=".venv\">
+      <Id>.venv</Id>
+      <Version>3.6</Version>
+      <Description>.venv (Python 3.6 (32-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

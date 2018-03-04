@@ -1,5 +1,3 @@
-# Version 0.3
-
 from pprint import pprint, pformat
 import datetime
 import pydash as _
@@ -82,10 +80,3 @@ def morph(number, words):
         choice = CHOICES[number % 10 if number % 10 < 5 else 5]
 
     return words[choice]
-
-# # Example:
-#
-# words = ['ÑÐ±Ð»Ð¾ÐºÐ¾', 'ÑÐ±Ð»Ð¾ÐºÐ°', 'ÑÐ±Ð»Ð¾Ðº']
-#
-# for i in range(0, 30):
-#     print(i, morph(i, words))
