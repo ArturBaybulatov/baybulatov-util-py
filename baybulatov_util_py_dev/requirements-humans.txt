@@ -1,2 +1,0 @@
-pydash
-pyreadline # Console tab completion
