@@ -1,7 +1,7 @@
 # Version: dev
 
+from pydash import _
 import datetime
-import pydash as _
 import random
 import string
 
@@ -16,7 +16,7 @@ def take_random(coll, n):
     if n == 0:
         return []
 
-    chunk = _.sample(coll, n)
+    chunk = _.sample_size(coll, n)
 
     for item in chunk:
         coll.remove(item)
@@ -28,24 +28,30 @@ def take_one_random(coll):
     if len(coll) == 0:
         return None
 
-    return coll.pop(_.random(0, len(coll)-1))
-
-
-def random_phone():
-    return '+7' + str(_.sample((917, 964, 965, 987, 912, 935))) + str(_.random(1000000, 9999999))
+    return coll.pop(random.randint(0, len(coll) - 1))
 
 
 def random_date():
-    #return timezone.utc.localize(timezone.datetime(_.random(2010, 2020), _.random(1, 12), _.random(1, 28)))
-    return datetime.date(_.random(2010, 2020), _.random(1, 12), _.random(1, 28))
+    return datetime.date(
+        random.random(1970, 2020),
+        random.random(1, 12),
+        random.random(1, 28),
+    )
 
 
-def random_amount():
-    return random.random() * random.choice((100, 1000, 10000))
+def visually_random_number():
+    return random.choice((
+        random.randint(1, 9),
+        random.randint(10, 99),
+        random.randint(100, 999),
+        random.randint(1000, 9999),
+        random.randint(10000, 99999),
+        random.randint(100000, 999999),
+    ))
 
 
-def lorem(words=None, sentences=5):
-    vocab = _.split((
+def lorem(sentence_count=random.randint(1, 5), word_count=None):
+    vocab = (
         'a ac adipiscing amet ante arcu at auctor augue bibendum commodo condimentum consectetur consequat convallis curabitur'
         'cursus diam dictum dignissim dolor donec duis efficitur eget eleifend elit enim erat et eu ex facilisis faucibus feugiat'
         'finibus gravida iaculis id imperdiet in integer ipsum lacinia lacus laoreet lectus leo libero ligula lobortis lorem'
@@ -53,16 +59,13 @@ def lorem(words=None, sentences=5):
         'pharetra phasellus porta porttitor posuere pretium proin pulvinar purus quam quis rhoncus rutrum sapien sed sem semper'
         'sit sollicitudin tempor tempus tincidunt tortor turpis ullamcorper ultricies ut varius vehicula vel velit vestibulum'
         'vitae viverra volutpat vulputate'
-    ), ' ')
+    ).split(' ')
 
-    return _.join(_.times(sentences, lambda i_: _.capitalize(_.join(_.sample_size(vocab, words or _.random(5, 30)), ' '))), '. ')
+    def generate_sentence():
+        current_word_count = random.randint(5, 30) if word_count is None else word_count
+        return _(vocab).sample_size(current_word_count).join(' ').capitalize().value()
 
-
-def decap(s):
-    if not isinstance(s, str):
-        raise TypeError('String expected')
-
-    return s[0].lower() + s[1:] if len(s) > 0 else s
+    return '. '.join(_.times(sentence_count, generate_sentence))
 
 
 def random_ident(length=8):

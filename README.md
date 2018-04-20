@@ -11,6 +11,5 @@ import util
 Reload an imported module like:
 
 ```
-import importlib
-importlib.reload(util)
+import importlib; importlib.reload(util)
 ```
